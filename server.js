@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-const mongoURI = "mongodb://localhost:27017/sigma"; // Replace <dbname> with your database name
+const mongoURI = "mongodb://localhost:27017/sigma";
 mongoose
   .connect(mongoURI, {
     useNewUrlParser: true,
@@ -25,7 +25,6 @@ mongoose
 // Use routes
 app.use("/api", routes);
 
-// Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder
   app.use(express.static("client/build"));
@@ -35,5 +34,5 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

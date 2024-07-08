@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 const routes = require("./routes");
-
+require("dotenv").config()
 const app = express();
 
 // Middleware
@@ -13,7 +13,8 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-const mongoURI = "mongodb://localhost:27017/sigma";
+const mongoURI = process.env.MONGO_URI
+// /?retryWrites=true&w=majority&appName=embifidb";
 mongoose
   .connect(mongoURI, {
     useNewUrlParser: true,
@@ -35,4 +36,5 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const PORT = process.env.PORT || 8080;
+console.log('PORT', process.env.PORT);
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

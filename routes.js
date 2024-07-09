@@ -1,10 +1,10 @@
-const express = require('express');
-const Ride = require('./models/Ride');
+const express = require("express");
+const Ride = require("./models/Ride");
 
 const router = express.Router();
 
 // Get all rides
-router.get('/rides', async (req, res) => {
+router.get("/rides", async (req, res) => {
   try {
     const rides = await Ride.find();
     res.json(rides);
@@ -14,7 +14,7 @@ router.get('/rides', async (req, res) => {
 });
 
 // Add a ride
-router.post('/rides', async (req, res) => {
+router.post("/rides", async (req, res) => {
   const ride = new Ride({
     driver: req.body.driver,
     rider: req.body.rider,

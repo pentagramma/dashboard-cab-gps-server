@@ -10,4 +10,8 @@ router.get("/rides", getRides);
 // Add a ride
 router.post("/rides", createRide);
 
+router.get("/", function (req, res) {
+  res.send("Hello World");
+});
+
 module.exports = router;
